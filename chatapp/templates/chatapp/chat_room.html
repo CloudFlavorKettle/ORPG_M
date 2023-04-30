@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ room.name }}</h1>
+
+<div id="chat-box">
+    {% for message in messages %}
+    <div class="message">
+        <span class="sender">{{ message.sender.username }}</span>
+        <span class="timestamp">{{ message.created_at|date:"DATETIME_FORMAT" }}</span>
+        <div class="content">{{ message.message }}</div>
+    </div>
+    {% endfor %}
+</div>
+
+<form method="post" action="{% url 'send_message' room_id=room.id %}">
+    {% csrf_token %}
+    <input type="text" name="message" placeholder="Type your message here">
+    <button type="submit">Send</button>
+</form>
+{% endblock %}
