@@ -1,0 +1,36 @@
+{% load static %}
+
+<style>
+
+    .container {
+        padding: 0;
+        margin: 0, auto;
+    }
+
+    .container a {
+        width: 45%;
+        max-width: 250px;
+    }
+
+    .container div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 1rem;
+    }
+
+    .container img {
+        width: 100%;
+        border-radius: 1rem;
+    }
+
+</style>
+
+    {% include 'snippets/pagination.html' with page_obj=page_obj %}
+
+<div style="text-align: center;">
+    <a href="{% url 'chatapp:create_chat_room' %}" class="btn btn-dark rounded-pill mt-3 mb-3 px-2">
+        Create chat room
+    </a>
+</div>
